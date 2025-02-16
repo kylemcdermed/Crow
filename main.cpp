@@ -8,7 +8,8 @@ using std::cout;
 int main() {
     crow::SimpleApp app;
     CROW_ROUTE(app,"/")([]() {
-        return "Hello World!\n This is my first API!";
+        auto page = crow::mustache::load_text("fancypage.html");
+        return page;
     });
     app.port(18080).multithreaded().run();
 } 
